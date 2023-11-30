@@ -1,0 +1,57 @@
+using System;
+
+public class SapXepMang
+{
+    private int[] mangSoNguyen;
+
+    public SapXepMang(int[] mang)
+    {
+        mangSoNguyen = mang;
+    }
+
+    public void SapXepTangDan()
+    {
+        Array.Sort(mangSoNguyen);
+    }
+
+    public void SapXepGiamDan()
+    {
+        Array.Sort(mangSoNguyen);
+        Array.Reverse(mangSoNguyen);
+    }
+
+    public void SapXepTuyetDoiTangDan()
+    {
+        Array.Sort(mangSoNguyen, (a, b) => Math.Abs(a).CompareTo(Math.Abs(b)));
+    }
+
+    public void InMang()
+    {
+        Console.WriteLine(string.Join(", ", mangSoNguyen));
+    }
+}
+
+class ChuongTrinh
+{
+    static void Main()
+    {
+        int[] soNguyen = { -5, 3, -1, 8, 2, -4, 0, 7, -6 };
+
+        SapXepMang sapXep = new SapXepMang(soNguyen);
+
+        // Sắp xếp theo thứ tự tăng dần
+        sapXep.SapXepTangDan();
+        Console.WriteLine("Sắp xếp theo thứ tự tăng dần:");
+        sapXep.InMang();
+
+        // Sắp xếp theo thứ tự giảm dần
+        sapXep.SapXepGiamDan();
+        Console.WriteLine("\nSắp xếp theo thứ tự giảm dần:");
+        sapXep.InMang();
+
+        // Sắp xếp theo trị tuyệt đối tăng dần
+        sapXep.SapXepTuyetDoiTangDan();
+        Console.WriteLine("\nSắp xếp theo trị tuyệt đối tăng dần:");
+        sapXep.InMang();
+    }
+}
