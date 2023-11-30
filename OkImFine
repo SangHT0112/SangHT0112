@@ -1,0 +1,95 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ConsoleApplication1
+{
+    class Program
+    {
+        class NHANVIEN
+        {
+            string name;
+            string ngaySinh;
+            string diaChi;
+            public virtual void Nhap()
+            {
+                Console.Write("Nhap ho va ten:");
+                name = Console.ReadLine();
+                Console.Write("Nhap ngay sinh:");
+                ngaySinh = Console.ReadLine();
+                Console.Write("Nhap dia chi:");
+                diaChi = Console.ReadLine();
+
+            }
+
+            public virtual void Xuat()
+            {
+                Console.Write("{0}\t\t {1}\t\t {2}\t\t ", name, ngaySinh, diaChi);
+            }
+        }
+
+        class NVSANXUAT : NHANVIEN
+        {
+            Int64 soSanPham;
+            public override void Nhap()
+            {
+                base.Nhap();
+                Console.Write("Nhap so san pham:");
+                soSanPham = Convert.ToInt64(Console.ReadLine());
+            }
+            public override void Xuat()
+            {
+                base.Xuat();
+                Console.WriteLine("{0}d", soSanPham * 2000);
+            }
+        }
+
+        class NVCONGNHAT : NHANVIEN
+        {
+            Int64 soNgayCong;
+            public override void Nhap()
+            {
+                base.Nhap();
+                Console.Write("Nhap so san ngay cong:");
+                soNgayCong = Convert.ToInt64(Console.ReadLine());
+            }
+            public override void Xuat()
+            {
+                base.Xuat();
+                Console.WriteLine("{0}d", soNgayCong * 50000);
+            }
+        }
+
+        class NVQUANLY : NHANVIEN
+        {
+            Int64 heSoLuong;
+            public override void Nhap()
+            {
+                base.Nhap();
+                Console.Write("Nhap he so luong:");
+                heSoLuong = Convert.ToInt64(Console.ReadLine());
+            }
+            public override void Xuat()
+            {
+                base.Xuat();
+                Console.WriteLine("{0}d", heSoLuong * 1480000);
+            }
+        }
+        static void Main(string[] args)
+        {
+            NVSANXUAT nv1 = new NVSANXUAT();
+            nv1.Nhap();
+            NVCONGNHAT nv2 = new NVCONGNHAT();
+            nv2.Nhap();
+            NVQUANLY nv3 = new NVQUANLY();
+            nv3.Nhap();
+            Console.WriteLine("Ho va ten \t Nam Sinh \t Dia Chi \t Luong");
+            nv1.Xuat();
+            nv2.Xuat();
+            nv3.Xuat();
+            Console.ReadKey();
+        }
+    }
+}
